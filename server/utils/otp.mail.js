@@ -10,7 +10,7 @@ export async function sendOtp(otp, mail) {
         address: process.env.USER,
       },
       to: mail,
-      subject: "Your OTP",
+      subject: "Yours OTP",
       text: `Here's your OTP, valid for 5 minutes: ${otp}`,
       html: `<p>Here's your OTP, valid for 5 minutes: <b>${otp}</b></p>`,
     });
