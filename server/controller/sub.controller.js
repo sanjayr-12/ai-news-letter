@@ -51,9 +51,9 @@ export const Verify = async (req, res) => {
     if (check) {
       return res.status(400).json({ error: "email is already subscribed" });
     }
-      const verifyOTP = await bcrypt.compare(otp, checkValidation.otp);
-      console.log(verifyOTP);
-      
+    const verifyOTP = await bcrypt.compare(otp, checkValidation.otp);
+    console.log(verifyOTP);
+
     if (!verifyOTP) {
       return res.status(400).json({ error: "Incorrect OTP" });
     }
@@ -75,4 +75,8 @@ export const getContent = async (req, res) => {
   } catch (error) {
     res.json(error);
   }
+};
+
+export const selfRequest = (req, res) => {
+  return res.status(200).json({ message: "server restarted" });
 };
