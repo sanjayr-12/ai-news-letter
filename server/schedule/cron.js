@@ -5,7 +5,7 @@ import { SendContent } from "../utils/context.js";
 
 export const Schedule = () => {
   cron.schedule(
-    "16 11 * * *",
+    "36 02 * * *",
     async () => {
       try {
         const context = await genContent();
