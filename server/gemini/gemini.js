@@ -9,8 +9,7 @@ export async function genContent() {
     const prompt =
       "choose any two random tech topics, the first one should be the programming topic and the second is technology oriented topic and write each content in 200 words, there should be only the heading and the content, and no other words and return in the html format, note each time return the some unique topic";
     const result = await model.generateContent(prompt);
-    console.log(result.response.text());
-    return result;
+    return result.response.text();
   } catch (error) {
     throw error;
   }
