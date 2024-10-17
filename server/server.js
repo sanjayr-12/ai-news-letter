@@ -1,17 +1,17 @@
-import express from "express"
+import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./db/db.js";
-dotenv.config()
-import subRoutes from "./routes/sub.routes.js"
+dotenv.config();
+import subRoutes from "./routes/sub.routes.js";
+import cors from "cors";
 
-const app = express()
-app.use(express.json())
+const app = express();
+app.use(express.json());
+app.use(cors());
 
+app.use("/api/sub", subRoutes);
 
-app.use("/api/sub", subRoutes)
-
-
-app.listen((process.env.PORT), () => {
-    console.log("server started at " + process.env.PORT);
-    connectDB()
-})
+app.listen(process.env.PORT, () => {
+  console.log("server started at " + process.env.PORT);
+  connectDB();
+});

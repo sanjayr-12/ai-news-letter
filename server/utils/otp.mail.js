@@ -11,8 +11,9 @@ export async function sendOtp(otp, mail) {
       },
       to: mail,
       subject: "Yours OTP",
-      text: `Here's your OTP, valid for 5 minutes: ${otp}`,
-      html: `<p>Here's your OTP, valid for 5 minutes: <b>${otp}</b></p>`,
+      text: `Giggity! Here’s your OTP, champ! You’ve got 5 minutes to use it before it’s gone, gone, gone! So don’t wait, enter this baby right now: ${otp}! Awright!`,
+      html: `<p>Giggity! Here’s your OTP, champ! You’ve got <b>5 minutes</b> to use it before it’s gone, gone, gone! So don’t wait, enter this baby right now: <h1>${otp}</h1> Awright!</p>
+`,
     });
     console.log("OTP email sent successfully!");
   } catch (err) {
