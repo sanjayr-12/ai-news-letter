@@ -2,27 +2,30 @@ import { useState } from "react";
 import axios from "axios";
 import "./app.css";
 import Thank from "./Thank";
-import { Toaster } from "react-hot-toast"
+import { Toaster } from "react-hot-toast";
 import toast from "react-hot-toast";
 
 const App = () => {
   const [show, setShow] = useState(false);
   const [thank, setThank] = useState(false);
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formdata = new FormData(e.target);
     const email = formdata.get("email");
+    if (!email.trim()) {
+      return;
+    }
     try {
       const response = await axios.post(import.meta.env.VITE_API_URL, {
         email,
       });
       localStorage.setItem("email", email);
-      toast.success(response.data.message)
+      toast.success(response.data.message);
       setShow(true);
     } catch (error) {
       console.log(error);
-      toast.error(error.response.data.error)
+      toast.error(error.response.data.error);
       setShow(false);
     }
   };
@@ -32,6 +35,9 @@ const App = () => {
     const formdata = new FormData(e.target);
     const otp = formdata.get("otp");
     const email = localStorage.getItem("email");
+    if (!otp.trim()) {
+      return;
+    }
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}verify`,
@@ -40,7 +46,7 @@ const App = () => {
           email,
         }
       );
-      toast.success(response.data.message)
+      toast.success(response.data.message);
       setThank(true);
       localStorage.removeItem("email");
     } catch (error) {
@@ -73,14 +79,14 @@ const App = () => {
                 placeholder="enter your otp"
                 required
               />
-              <input type="submit" />
+              <input type="submit" disabled={!show} />
             </form>
           )}
         </div>
       ) : (
         <Thank />
       )}
-      <Toaster/>
+      <Toaster />
     </div>
   );
 };
