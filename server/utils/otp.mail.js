@@ -6,14 +6,13 @@ export async function sendOtp(otp, mail) {
   try {
     transporter.sendMail({
       from: {
-        name: "Quagmire",
+        name: "Peter Griffen",
         address: process.env.USER,
       },
       to: mail,
-      subject: "Yours OTP",
-      text: `Giggity! Here’s your OTP, champ! You’ve got 5 minutes to use it before it’s gone, gone, gone! So don’t wait, enter this baby right now: ${otp}! Awright!`,
-      html: `<p>Giggity! Here’s your OTP, champ! You’ve got <b>5 minutes</b> to use it before it’s gone, gone, gone! So don’t wait, enter this baby right now: <h1>${otp}</h1> Awright!</p>
-`,
+      subject: "Your OTP, Buddy!",
+      text: `Hey, it's Peter Griffin! You got an OTP... I don’t know what that means, but you’ve only got like 5 minutes before it disappears or something. So hurry up and use this thing: ${otp}. Yeah, you probably should do that now... oh crap, I forgot what I was saying! Heh heh, good luck, champ!`,
+      html: `<p>Hey, it's Peter Griffin! You got an OTP... I don’t really know what that is, but apparently you’ve only got <b>5 minutes</b> before it’s gone! So you should probably enter this right now: <h1>${otp}</h1>. Yeah... good luck with that! Oh man, I forgot what I was saying... heh heh heh!</p>`,
     });
     console.log("OTP email sent successfully!");
   } catch (err) {
