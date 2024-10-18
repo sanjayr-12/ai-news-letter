@@ -23,11 +23,11 @@ const App = () => {
         email,
       });
       localStorage.setItem("email", email);
-      toast.success(response.data.message);
+      toast.success(response?.data?.message);
       setShow(true);
     } catch (error) {
       console.log(error);
-      toast.error(error.response.data.error);
+      toast.error(error?.response?.data.error || "server is down");
       setShow(false);
     } finally {
       setLoading(false); 
@@ -51,11 +51,11 @@ const App = () => {
           email,
         }
       );
-      toast.success(response.data.message);
+      toast.success(response?.data.message);
       setThank(true);
       localStorage.removeItem("email");
     } catch (error) {
-      toast.error(error.response.data.error);
+      toast.error(error?.response?.data.error || "server is down");
       console.log(error);
       setThank(false);
     } finally {
