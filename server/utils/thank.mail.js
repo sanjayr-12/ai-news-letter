@@ -6,7 +6,7 @@ export async function ThankMess(mail) {
   try {
     transporter.sendMail({
       from: {
-        name: "Quagmire",
+        name: "Peter Griffen",
         address: process.env.USER,
       },
       to: mail,
