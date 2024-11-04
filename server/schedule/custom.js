@@ -7,14 +7,18 @@ export async function custom(mail) {
   try {
     transporter.sendMail({
       from: {
-        name: "Quagmire",
+        name: "Peter Griffen",
         address: process.env.USER,
       },
       to: mail,
-      subject: "Good bye",
-      html:
-        "<p>Hey, hey, hey! Giggity! What’s up, guys? You know me—<b>Quagmire</b>, baby! Yeah, I’m a pilot... or at least I <b>was</b>! Got suspended for... well, you know, reasons... <i>giggity!</i> So I had to take this crappy gig in the meantime. But guess what? I’m getting my <b>license back</b>! Awright!</p>" +
-        "<p>And now, my buddy <b>Peter</b>’s gonna take over this whole mess. So, you know, blame him if things go sideways, <i>giggity goo!</i> Awright!</p>",
+      subject: "Hey, Just Doing My Job",
+      html: `
+  <p>Hey, I hope you're not doing too well... Alright, let me come straight to the point here. So, the so-called 'owner' of this job has written an article. Yeah, big whoop, right? It's a whole CRUD app thing—kinda pointless if you ask me. But don't tell him I said that, okay? I'm just doing what he told me. Ugh.</p>
+
+  <p>Anyway, here’s the link: <a href="https://www.freecodecamp.org/news/build-crud-app-react-and-convex" target="_blank">https://www.freecodecamp.org/news/build-crud-app-react-and-convex</a></p>
+
+  <p>Do whatever you want with it; my job's done here. Heh heh!</p>
+`,
     });
     console.log("email sent successfully!");
   } catch (err) {
