@@ -17,7 +17,7 @@ const App = () => {
     if (!email.trim()) {
       return;
     }
-    setLoading(true); 
+    setLoading(true);
     try {
       const response = await axios.post(import.meta.env.VITE_API_URL, {
         email,
@@ -30,7 +30,7 @@ const App = () => {
       toast.error(error?.response?.data.error || "server is down");
       setShow(false);
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
@@ -42,7 +42,7 @@ const App = () => {
     if (!otp.trim()) {
       return;
     }
-    setLoading(true); 
+    setLoading(true);
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}verify`,
@@ -59,7 +59,7 @@ const App = () => {
       console.log(error);
       setThank(false);
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
@@ -67,7 +67,7 @@ const App = () => {
     <div>
       {!thank ? (
         <div className="main-container">
-          <h2>Subscribe to 2Topics!</h2>
+          <h2>Subscribe to get daily topics from Peter Griffin</h2>
           <form onSubmit={handleSubmit}>
             <input
               type="email"
@@ -75,7 +75,11 @@ const App = () => {
               placeholder="enter your email"
               required
             />
-            <input type="submit" disabled={show || loading} value={loading ? "Submitting..." : "Submit"} /> 
+            <input
+              type="submit"
+              disabled={show || loading}
+              value={loading ? "Submitting..." : "Submit"}
+            />
           </form>
           {show && (
             <form onSubmit={handleVerify}>
@@ -86,7 +90,11 @@ const App = () => {
                 placeholder="enter your otp"
                 required
               />
-              <input type="submit" disabled={loading} value={loading ? "Submitting..." : "Submit"} />
+              <input
+                type="submit"
+                disabled={loading}
+                value={loading ? "Submitting..." : "Submit"}
+              />
             </form>
           )}
         </div>
