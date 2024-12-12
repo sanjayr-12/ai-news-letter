@@ -6,7 +6,7 @@ export async function sendOtp(otp, mail) {
   try {
     transporter.sendMail({
       from: {
-        name: "Peter Griffen",
+        name: "Peter Griffin",
         address: process.env.USER,
       },
       to: mail,

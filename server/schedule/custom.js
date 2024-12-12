@@ -7,17 +7,15 @@ export async function custom(mail) {
   try {
     transporter.sendMail({
       from: {
-        name: "Peter Griffen",
+        name: "Peter Griffin",
         address: process.env.USER,
       },
       to: mail,
-      subject: "Hey, Just Doing My Job",
+      subject: "Same Website, Fancy New Name",
       html: `
-  <p>Hey, I hope you're not doing too well... Alright, let me come straight to the point here. So, the so-called 'owner' of this job has written an article. Yeah, big whoop, right? It's a whole CRUD app thing—kinda pointless if you ask me. But don't tell him I said that, okay? I'm just doing what he told me. Ugh.</p>
+  <p>Hey guys, big news! Well, not *that* big, but whatever. I didn’t make a brand-new website or anything, but I *did* update the name! You can now find my site at <a href="http://www.petergriffin.work.gd" target="_blank">www.petergriffin.work.gd</a>. Sounds fancy, right? Yeah, I thought so too. Heh heh!</p>
 
-  <p>Anyway, here’s the link: <a href="https://www.freecodecamp.org/news/build-crud-app-react-and-convex" target="_blank">https://www.freecodecamp.org/news/build-crud-app-react-and-convex</a></p>
-
-  <p>Do whatever you want with it; my job's done here. Heh heh!</p>
+  <p>So, go check it out... or don’t. It’s the same old site with a shiny new name. My job here’s done. Heh heh, sweet!</p>
 `,
     });
     console.log("email sent successfully!");

@@ -6,7 +6,7 @@ export async function SendContent(context, mail) {
   try {
     transporter.sendMail({
       from: {
-        name: "Peter Griffen",
+        name: "Peter Griffin",
         address: process.env.USER,
       },
       to: mail,
