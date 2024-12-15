@@ -11,11 +11,11 @@ export async function custom(mail) {
         address: process.env.USER,
       },
       to: mail,
-      subject: "Same Website, Fancy New Name",
+      subject: "New Look, Same Website, But Now It's Mine!",
       html: `
-  <p>Hey guys, big news! Well, not *that* big, but whatever. I didn’t make a brand-new website or anything, but I *did* update the name! You can now find my site at <a href="http://www.petergriffin.work.gd" target="_blank">www.petergriffin.work.gd</a>. Sounds fancy, right? Yeah, I thought so too. Heh heh!</p>
+<p>Hey guys, big update! I’ve officially taken over this website—yep, it's mine now! I got sick of the old UI, so I gave it a makeover. Check out the brand-new look! Oh, and I didn’t stop there—I also bought a shiny new domain. You can now find my site at <a href="https://www.peter.work.gd" target="_blank">www.peter.work.gd</a>. Looks way cooler, right? Heh heh!</p>
 
-  <p>So, go check it out... or don’t. It’s the same old site with a shiny new name. My job here’s done. Heh heh, sweet!</p>
+<p>So go ahead, take a look at the new UI. Or don't... whatever. But hey, it's my site now, and it’s got a slick new vibe. My work here is done. Heh heh, sweet!</p>
 `,
     });
     console.log("email sent successfully!");
