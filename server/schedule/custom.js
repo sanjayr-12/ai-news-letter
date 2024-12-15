@@ -12,11 +12,11 @@ export async function custom(mail, token) {
         address: process.env.USER,
       },
       to: mail,
-      subject: "New Look, Same Website, But Now It's Mine!",
+      subject: "You Can Unsubscribe, But You’ll Miss Me!",
       html: `
-<p>Hey guys, big update! I’ve officially taken over this website—yep, it's mine now! I got sick of the old UI, so I gave it a makeover. Check out the brand-new look! Oh, and I didn’t stop there—I also bought a shiny new domain. You can now find my site at <a href="https://www.peter.work.gd" target="_blank">www.peter.work.gd</a>. Looks way cooler, right? Heh heh!</p>
+<p>Hey guys, big news... I’ve added an unsubscribe feature! Now, you can unsubscribe if you really want to, but think about it—once you're gone, you'll miss me. Seriously, who doesn't want to hear from Peter every day? Heh heh, I know you’ll regret it!</p>
 
-<p>So go ahead, take a look at the new UI. Or don't... whatever. But hey, it's my site now, and it’s got a slick new vibe. My work here is done. Heh heh, sweet!</p>
+<p>If you still want to go, fine. But just remember, I’ll always be here, waiting for you. And hey, every daily topic email will have the unsubscribe link, and it'll be valid for 24 hours.</p>
 
 <a href="${process.env.BACK_URL}/api/sub/unsubscribe?peter=${token}" target="_blank">Unsubscribe</a>
 `,
@@ -33,9 +33,11 @@ export const customMail = async () => {
     const subscribers = await subModel.find();
     console.log("started sending");
     for (const subscriber of subscribers) {
-      const token = generateToken(subscriber.email);
-      await custom(subscriber.email, token);
-      console.log("sended successfully");
+      if (subscriber.email === "sanjayr.cs22@bitsathy.ac.in") {
+        const token = generateToken(subscriber.email);
+        await custom(subscriber.email, token);
+        console.log("sended successfully");
+      }
     }
   } catch (error) {
     console.log(error);

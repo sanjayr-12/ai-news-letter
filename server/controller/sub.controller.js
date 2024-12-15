@@ -104,6 +104,8 @@ export const unSubscribe = async (req, res) => {
     await GoodByeMess(response.email);
     return res.status(200).send("Alright, good bye! Don’t forget me. Heh heh.");
   } catch (error) {
+    console.log(error);
+    
     return res.status(500).send("Yikes, server’s acting up. Typical, huh?");
   }
 };
