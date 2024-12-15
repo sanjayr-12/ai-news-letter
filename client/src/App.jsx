@@ -51,7 +51,7 @@ const App = () => {
           email,
         }
       );
-      toast.success(response?.data.message);
+      toast.success(response?.data?.message);
       setThank(true);
       localStorage.removeItem("email");
     } catch (error) {
