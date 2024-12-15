@@ -2,8 +2,9 @@ import { transporter } from "../config/mail.config.js";
 import { configDotenv } from "dotenv";
 configDotenv();
 import subModel from "../schema/sub.schema.js";
+import { generateToken } from "../jwt/generateToken.js";
 
-export async function custom(mail) {
+export async function custom(mail, token) {
   try {
     transporter.sendMail({
       from: {
@@ -16,6 +17,8 @@ export async function custom(mail) {
 <p>Hey guys, big update! I’ve officially taken over this website—yep, it's mine now! I got sick of the old UI, so I gave it a makeover. Check out the brand-new look! Oh, and I didn’t stop there—I also bought a shiny new domain. You can now find my site at <a href="https://www.peter.work.gd" target="_blank">www.peter.work.gd</a>. Looks way cooler, right? Heh heh!</p>
 
 <p>So go ahead, take a look at the new UI. Or don't... whatever. But hey, it's my site now, and it’s got a slick new vibe. My work here is done. Heh heh, sweet!</p>
+
+<a href="${process.env.BACK_URL}/api/sub/unsubscribe?peter=${token}" target="_blank">Unsubscribe</a>
 `,
     });
     console.log("email sent successfully!");
@@ -30,7 +33,8 @@ export const customMail = async () => {
     const subscribers = await subModel.find();
     console.log("started sending");
     for (const subscriber of subscribers) {
-      await custom(subscriber.email);
+      const token = generateToken(subscriber.email);
+      await custom(subscriber.email, token);
       console.log("sended successfully");
     }
   } catch (error) {

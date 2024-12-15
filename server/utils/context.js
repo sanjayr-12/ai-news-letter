@@ -12,7 +12,7 @@ export async function SendContent(context, mail, token) {
       to: mail,
       subject: "Here's you today topic's",
       html: `
-<p>Testing</p>
+${context}
 <a href="${process.env.BACK_URL}/api/sub/unsubscribe?peter=${token}" target="_blank">Unsubscribe</a>
 `,
     });
