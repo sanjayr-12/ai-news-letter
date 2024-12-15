@@ -33,11 +33,9 @@ export const customMail = async () => {
     const subscribers = await subModel.find();
     console.log("started sending");
     for (const subscriber of subscribers) {
-      if (subscriber.email === "sanjayr.cs22@bitsathy.ac.in") {
-        const token = generateToken(subscriber.email);
-        await custom(subscriber.email, token);
-        console.log("sended successfully");
-      }
+      const token = generateToken(subscriber._id);
+      await custom(subscriber.email, token);
+      console.log("sended successfully");
     }
   } catch (error) {
     console.log(error);
