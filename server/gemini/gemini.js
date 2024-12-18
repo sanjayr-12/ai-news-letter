@@ -3,7 +3,7 @@ import {
   HarmBlockThreshold,
   HarmCategory,
 } from "@google/generative-ai";
-import historyModel from "../schema/history.schema";
+import historyModel from "../schema/history.schema.js";
 
 const genAI = new GoogleGenerativeAI(process.env.GEM_API);
 
@@ -26,7 +26,14 @@ const model = genAI.getGenerativeModel({
 
 export async function genContent() {
   try {
-    const result = await model.generateContent("generate");
+    const array = [];
+    const history = await historyModel.find();
+    for (const his of history) {
+      array.push(his.history);
+    }
+    const result = await model.generateContent(
+      array + " " + process.env.HISTORY
+    );
     return result.response.text();
   } catch (error) {
     throw error;
