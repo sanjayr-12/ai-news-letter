@@ -19,7 +19,7 @@ app.listen(process.env.PORT, () => {
   console.log("server started at " + process.env.PORT);
   connectDB();
   reStart();
-  Schedule();
+  Schedule(); 
   // customMail()
   // SendContent()
 });
