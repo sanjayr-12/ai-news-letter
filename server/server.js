@@ -16,7 +16,7 @@ app.use(cors());
 app.use("/api/sub", subRoutes);
 
 app.listen(process.env.PORT, () => {
-  console.log("server started at " + process.env.PORT);
+  console.log("server started");
   connectDB();
   reStart();
   Schedule(); 
