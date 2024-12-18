@@ -70,15 +70,6 @@ export const Verify = async (req, res) => {
   }
 };
 
-export const getContent = async (req, res) => {
-  try {
-    const result = await genContent();
-    return res.json({ message: result });
-  } catch (error) {
-    res.json(error);
-  }
-};
-
 export const selfRequest = (req, res) => {
   return res.status(200).json({ message: "server restarted" });
 };
