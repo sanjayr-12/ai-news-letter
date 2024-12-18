@@ -3,6 +3,7 @@ import {
   HarmBlockThreshold,
   HarmCategory,
 } from "@google/generative-ai";
+import historyModel from "../schema/history.schema";
 
 const genAI = new GoogleGenerativeAI(process.env.GEM_API);
 

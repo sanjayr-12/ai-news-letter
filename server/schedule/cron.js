@@ -3,6 +3,7 @@ import cron from "node-cron";
 import subModel from "../schema/sub.schema.js";
 import { SendContent } from "../utils/context.js";
 import { generateToken } from "../jwt/generateToken.js";
+import historyModel from "../schema/history.schema.js";
 
 export const Schedule = () => {
   cron.schedule(
@@ -12,6 +13,10 @@ export const Schedule = () => {
         const context = await genContent();
         const subscribers = await subModel.find();
         console.log("started sending");
+        const newData = new historyModel({
+          history: context,
+        });
+        await newData.save();
         for (const subscriber of subscribers) {
           const token = generateToken(subscriber._id);
           await SendContent(context, subscriber.email, token);
