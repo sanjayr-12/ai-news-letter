@@ -12,13 +12,11 @@ export async function custom(mail, token) {
         address: process.env.USER,
       },
       to: mail,
-      subject: "You Can Unsubscribe, But You’ll Miss Me!",
-      html: `
-<p>Hey guys, big news... I’ve added an unsubscribe feature! Now, you can unsubscribe if you really want to, but think about it—once you're gone, you'll miss me. Seriously, who doesn't want to hear from Peter every day? Heh heh, I know you’ll regret it!</p>
+      subject: "Hang Tight, Folks—Upgrades and Fixes in Progress!",
+html: `
+<p>Hey guys, just a quick heads-up. There’s some stuff going on with the site—yeah, a few upgrades and, uh, a domain problem (don’t ask). So, I won’t be sending any topics for the next few days. Bummer, right? But don’t worry, I’m on it! Heh heh!</p>
 
-<p>If you still want to go, fine. But just remember, I’ll always be here, waiting for you. And hey, every daily topic email will have the unsubscribe link, and it'll be valid for 24 hours.</p>
-
-<a href="${process.env.BACK_URL}/api/sub/unsubscribe?peter=${token}" target="_blank">Unsubscribe</a>
+<p>Once I fix everything, I’ll be back with more tech topics in classic Peter Griffin style. Just hang tight and keep an eye on your inbox. Thanks for sticking around, pals!</p>
 `,
     });
     console.log("email sent successfully!");
