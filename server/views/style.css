@@ -1,0 +1,27 @@
+body {
+  background-color: #e5e7eb;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+div{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+img{
+  width: 300px;
+  height: 200px;
+}

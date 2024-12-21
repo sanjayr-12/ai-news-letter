@@ -13,13 +13,15 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.set("view engine", "pug");
+
 app.use("/api/sub", subRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log("server started");
   connectDB();
   reStart();
-  Schedule(); 
+  Schedule();
   // customMail()
   // SendContent()
 });

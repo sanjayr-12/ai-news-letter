@@ -78,25 +78,27 @@ export const unSubscribe = async (req, res) => {
   try {
     const token = req.query.peter;
     if (!token) {
-      return res.status(400).send("Whoa, something went wrong. What’d you do?");
+      return res.status(400).render("unsubscribe", {
+        title: "Whoa, something went wrong. What’d you do?",
+      });
     }
     const verify = jwt.verify(token, process.env.JWT_SECRET);
     if (!verify) {
-      return res
-        .status(400)
-        .send(
-          "Oh man, something’s off, and I have no idea what it is. Heh heh!"
-        );
+      return res.status(400).render("unsubscribe", {
+        title:
+          "Oh man, something’s off, and I have no idea what it is. Heh heh!",
+      });
     }
     const response = await subModel.findByIdAndDelete(verify.id);
     if (!response) {
       return res.status(400).send("Uh... you’re already unsubscribed, pal.");
     }
     await GoodByeMess(response.email);
-    return res.status(200).send("Alright, good bye! Don’t forget me. Heh heh.");
+    return res.status(200).render("unsubscribe", {
+      title: "Alright, good bye! Don’t forget me. Heh heh.",
+    });
   } catch (error) {
     console.log(error);
-    
     return res.status(500).send("Yikes, server’s acting up. Typical, huh?");
   }
 };
