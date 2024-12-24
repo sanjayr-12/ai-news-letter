@@ -12,12 +12,21 @@ export async function custom(mail, token) {
         address: process.env.USER,
       },
       to: mail,
-      subject: "Hang Tight, Folks—Upgrades and Fixes in Progress!",
-html: `
-<p>Hey guys, just a quick heads-up. There’s some stuff going on with the site—yeah, a few upgrades and, uh, a domain problem (don’t ask). So, I won’t be sending any topics for the next few days. Bummer, right? But don’t worry, I’m on it! Heh heh!</p>
-
-<p>Once I fix everything, I’ll be back with more tech topics in classic Peter Griffin style. Just hang tight and keep an eye on your inbox. Thanks for sticking around, pals!</p>
-`,
+      subject:
+        "Alright, Alright, ALRIGHT! I'M BACK! (And I Got a New Domain, Baby!)",
+      html: `
+        <p>
+          Hey guys, look who's back! You miss me? Huh? Huh? Okay, okay, I'm
+          back! And listen to this, I even bought a new domain for 40 bucks!
+          Yes, forty! You believe that? I was gonna buy some lottery tickets but
+          then, a domain seemed like a more responsible choice. The name is
+          <a href="https://www.omgpeter.tech">omgpeter.tech</a>, is it great
+          huh? <a href="https://www.omgpeter.tech">www.omgpeter.tech</a>! So,
+          get your eyeballs ready, 'cause I'll be blasting tech topics your way
+          daily at... let's say 11:10 AM. Sharp! Don't be late! Alright, gotta
+          go, a guy needs a beer... bye!
+        </p>
+      `,
     });
     console.log("email sent successfully!");
   } catch (err) {
