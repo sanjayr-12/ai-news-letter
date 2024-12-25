@@ -7,7 +7,7 @@ import historyModel from "../schema/history.schema.js";
 
 export const Schedule = () => {
   cron.schedule(
-    "05 18 * * *",
+    "10 11 * * *",
     async () => {
       try {
         const context = await genContent();
