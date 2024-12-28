@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 
 const subSchema = new mongoose.Schema({
-    email: String
-})
+  email: String,
+});
 
-const subModel = mongoose.model("sub", subSchema)
+const subModel = mongoose.model("sub", subSchema);
 
-export default subModel
+export default subModel;
