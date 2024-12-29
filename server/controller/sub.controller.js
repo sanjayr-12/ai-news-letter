@@ -91,8 +91,11 @@ export const unSubscribe = async (req, res) => {
     }
     const response = await subModel.findByIdAndDelete(verify.id);
     if (!response) {
-      return res.status(400).send("Uh... you’re already unsubscribed, pal.");
+      return res.status(400).render("unsubscribe", {
+        title: "Uh... you’re already unsubscribed, pal.",
+      });
     }
+
     await GoodByeMess(response.email);
     return res.status(200).render("unsubscribe", {
       title: "Alright, good bye! Don’t forget me. Heh heh.",
