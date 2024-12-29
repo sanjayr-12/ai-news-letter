@@ -12,21 +12,15 @@ export async function custom(mail, token) {
         address: process.env.USER,
       },
       to: mail,
-      subject:
-        "Alright, Alright, ALRIGHT! I'M BACK! (And I Got a New Domain, Baby!)",
+      subject: "Taking a Break, But the Show Goes On!",
       html: `
-        <p>
-          Hey guys, look who's back! You miss me? Huh? Huh? Okay, okay, I'm
-          back! And listen to this, I even bought a new domain for 40 bucks!
-          Yes, forty! You believe that? I was gonna buy some lottery tickets but
-          then, a domain seemed like a more responsible choice. The name is
-          <a href="https://www.omgpeter.tech">omgpeter.tech</a>, is it great
-          huh? <a href="https://www.omgpeter.tech">www.omgpeter.tech</a>! So,
-          get your eyeballs ready, 'cause I'll be blasting tech topics your way
-          daily at... let's say 11:10 AM. Sharp! Don't be late! Alright, gotta
-          go, a guy needs a beer... bye!
-        </p>
-      `,
+  <p>
+    Hey guys, life's been throwing curveballs at me—both in real life and in the backend. So, I’ve decided to take a long break. Don’t worry, though, the service will still be up and running, but I won’t be sending out any new topics for a while. 
+  </p>
+  <p>
+    Consider this your tech topic vacation! Alright, gotta go sort some stuff out. Catch you all later... bye for now!
+  </p>
+`,
     });
     console.log("email sent successfully!");
   } catch (err) {
