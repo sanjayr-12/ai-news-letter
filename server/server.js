@@ -21,7 +21,7 @@ app.listen(process.env.PORT, () => {
   console.log("server started");
   connectDB();
   reStart();
-  // Schedule();
+  Schedule();
   // customMail()
   // SendContent()
 });
