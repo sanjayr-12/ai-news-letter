@@ -18,9 +18,9 @@ export const Schedule = () => {
         });
         await newData.save();
         for (const subscriber of subscribers) {
-          const token = generateToken(subscriber._id);
-          await SendContent(context, subscriber.email, token);
-          console.log("sended successfully");
+            const token = generateToken(subscriber._id);
+            await SendContent(context, subscriber.email, token);
+            console.log("sended successfully");
         }
       } catch (error) {
         console.log(error);
