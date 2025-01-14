@@ -102,6 +102,8 @@ export const unSubscribe = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    return res.status(500).send("Yikes, server’s acting up. Typical, huh?");
+    return res.status(500).render("unsubscribe", {
+      title: "Yikes, server’s acting up. Typical, huh?",
+    });
   }
 };
