@@ -101,7 +101,6 @@ export const unSubscribe = async (req, res) => {
       title: "Alright, good bye! Don’t forget me. Heh heh.",
     });
   } catch (error) {
-    console.log(error);
     return res.status(500).render("unsubscribe", {
       title: "Yikes, server’s acting up. Typical, huh?",
     });
