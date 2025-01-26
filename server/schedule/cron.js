@@ -7,7 +7,7 @@ import historyModel from "../schema/history.schema.js";
 
 export const Schedule = () => {
   cron.schedule(
-    "48 16 * * *",
+    "10 11 * * *",
     async () => {
       try {
         const context = await genContent();
@@ -18,11 +18,9 @@ export const Schedule = () => {
         });
         await newData.save();
         for (const subscriber of subscribers) {
-          if (subscriber.email === "sanjayraviradha2005@gmail.com") {
-            const token = generateToken(subscriber._id);
-            await SendContent(context, subscriber.email, token);
-            console.log("sended successfully");
-          }
+          const token = generateToken(subscriber._id);
+          await SendContent(context, subscriber.email, token);
+          console.log("sended successfully");
         }
       } catch (error) {
         console.log(error);
