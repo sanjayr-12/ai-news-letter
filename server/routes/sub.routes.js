@@ -4,7 +4,8 @@ import {
   Verify,
   selfRequest,
   unSubscribe,
-  singleSub
+  singleSub,
+  verifySingle
 } from "../controller/sub.controller.js";
 
 

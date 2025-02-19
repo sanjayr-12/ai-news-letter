@@ -10,6 +10,7 @@ import { GoodByeMess } from "../utils/goodBye.js";
 import singleModel from "../schema/single.schema.js";
 import { singleToken } from "../jwt/singleToken.js";
 import { sendSingleMail } from "../utils/singleMail.js";
+import blackModel from "../schema/blackList.schema.js";
 
 export const Subscribe = async (req, res) => {
   try {
@@ -125,17 +126,48 @@ export const singleSub = async (req, res) => {
     });
     await newSingle.save();
     const token = singleToken(newSingle._id);
-    await sendSingleMail(token, email)
-    return res.status(200).json({message:"Check your mail"})
+    sendSingleMail(token, email);
+    return res.status(200).json({ message: "Check your mail" });
   } catch (error) {
-    return res.status(500).json({error:"Internal server error "+error.message})
+    return res
+      .status(500)
+      .json({ error: "Internal server error " + error.message });
   }
 };
 
 export const verifySingle = async (req, res) => {
   try {
+    const token = req.query.sub;
 
+    if (!token) {
+      return res.status(400).json({ error: "No token" });
+    }
+    const verify = jwt.verify(token, process.env.JWT_SECRET);
+    if (!verify) {
+      return res.status(400).json({ error: "Verificaton fails" });
+    }
+    const checkSingle = await singleModel.findById(verify.id);
+
+    if (!checkSingle) {
+      return res.status(400).json({ error: "Email is not present" });
+    }
+    const blackList = await blackModel.findOne({ token });
+    if (blackList) {
+      return res.status(400).json({ error: "Link Expired" });
+    }
+    const newBlack = new blackModel({
+      token,
+    });
+    await newBlack.save();
+    const newEmail = await subModel({
+      email: checkSingle.email,
+    });
+    await newEmail.save();
+    ThankMess(newEmail.email)
+    return res.status(200).send("subscribed successfully");
   } catch (error) {
-
+    return res
+      .status(500)
+      .json({ error: "Internal server error " + error.message });
   }
 };

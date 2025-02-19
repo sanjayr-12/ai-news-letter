@@ -11,7 +11,7 @@ export async function sendSingleMail(token, mail) {
       },
       to: mail,
       subject: "Subscribe link",
-      html: `<p>Hey there! Here's your one-time use Magic Link, and it will expire after 5 minutes. Use it wisely!</p><a href="${process.env.BACK_URL}/api/user/single?sub=${token}" target="_blank">Magic Link</a>`,
+      html: `<p>Hey there! Here's your one-time use Single Subscribe, and it will expire after 5 minutes. Use it wisely!</p><a href="${process.env.BACK_URL}/api/sub/single?sub=${token}" target="_blank">Subscribe Link</a>`,
     });
   } catch (error) {
     throw error;
