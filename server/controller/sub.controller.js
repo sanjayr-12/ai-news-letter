@@ -121,6 +121,12 @@ export const singleSub = async (req, res) => {
     if (checkAlreadySub) {
       return res.status(400).json({ error: "Already Subscribed" });
     }
+    const checkSingleSub = await singleModel.findOne({ email });
+    if (checkSingleSub) {
+      const token = singleToken(newSingle._id);
+      sendSingleMail(token, email);
+      return res.status(200).json({ message: "Check your mail" });
+    }
     const newSingle = new singleModel({
       email,
     });
@@ -163,7 +169,7 @@ export const verifySingle = async (req, res) => {
       email: checkSingle.email,
     });
     await newEmail.save();
-    ThankMess(newEmail.email)
+    ThankMess(newEmail.email);
     return res.status(200).send("subscribed successfully");
   } catch (error) {
     return res
