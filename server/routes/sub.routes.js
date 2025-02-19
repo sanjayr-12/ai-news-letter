@@ -4,7 +4,9 @@ import {
   Verify,
   selfRequest,
   unSubscribe,
+  singleSub
 } from "../controller/sub.controller.js";
+
 
 const router = express.Router();
 
@@ -13,5 +15,6 @@ router.post("/verify", Verify);
 router.get("/self", selfRequest);
 router.get("/unsubscribe", unSubscribe);
 router.post("/single", singleSub);
+router.get("/single", verifySingle)
 
 export default router;

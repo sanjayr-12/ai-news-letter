@@ -7,6 +7,9 @@ import { genContent } from "../gemini/gemini.js";
 import { ThankMess } from "../utils/thank.mail.js";
 import jwt from "jsonwebtoken";
 import { GoodByeMess } from "../utils/goodBye.js";
+import singleModel from "../schema/single.schema.js";
+import { singleToken } from "../jwt/singleToken.js";
+import { sendSingleMail } from "../utils/singleMail.js";
 
 export const Subscribe = async (req, res) => {
   try {
@@ -104,5 +107,35 @@ export const unSubscribe = async (req, res) => {
     return res.status(500).render("unsubscribe", {
       title: "Yikes, server’s acting up. Typical, huh?",
     });
+  }
+};
+
+export const singleSub = async (req, res) => {
+  try {
+    const { email } = req.body;
+    if (!email) {
+      return res.status(400).json({ error: "Email is required" });
+    }
+    const checkAlreadySub = await subModel.findOne({ email });
+    if (checkAlreadySub) {
+      return res.status(400).json({ error: "Already Subscribed" });
+    }
+    const newSingle = new singleModel({
+      email,
+    });
+    await newSingle.save();
+    const token = singleToken(newSingle._id);
+    await sendSingleMail(token, email)
+    return res.status(200).json({message:"Check your mail"})
+  } catch (error) {
+    return res.status(500).json({error:"Internal server error "+error.message})
+  }
+};
+
+export const verifySingle = async (req, res) => {
+  try {
+
+  } catch (error) {
+
   }
 };
