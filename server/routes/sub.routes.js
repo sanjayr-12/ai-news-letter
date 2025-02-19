@@ -12,5 +12,6 @@ router.post("/", Subscribe);
 router.post("/verify", Verify);
 router.get("/self", selfRequest);
 router.get("/unsubscribe", unSubscribe);
+router.post("/single", singleSub);
 
 export default router;
