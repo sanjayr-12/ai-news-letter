@@ -106,7 +106,7 @@ export const unSubscribe = async (req, res) => {
     });
   } catch (error) {
     return res.status(500).render("unsubscribe", {
-      title: "Internal server error " + error.message,
+      title: "Internal server error link expired",
     });
   }
 };
